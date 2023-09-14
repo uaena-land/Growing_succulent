@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
 @import "root.css";
 @import "reset.css";
 @import "button.css";
+@import "music_player.css";
+
+body {
+    /* background: linear-gradient(180deg, rgba(213,255,0,1) 0%, rgba(248,255,226,1) 68%, rgba(255,255,255,1) 100%); */
+    background: linear-gradient(180deg, rgba(240,241,165,1) 23.8%, rgba(247,247,247,1) 92%);
+}
 
 main {
     display: grid;
@@ -14,7 +22,8 @@ main {
     min-height: 300px;
 
     background: var(--gameMachine-bg-color);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+    box-shadow: 0 20px 20px 0 rgba(240,241,165, 0.6);
     border-radius: 16px;
 
     margin: 0;

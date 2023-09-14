@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>다육이 키우기</title>
     <link rel="stylesheet" href="src/css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
 </head>
 <body>
     <main>
@@ -43,12 +47,38 @@
                 </div>
             </div>
             <div class="container__buttons">
-                <button type="button" class="btn-white" data-action="sunny" onclick="clickAction(event)">햇빛</button>
-                <button type="button" class="btn-white" data-action="watering" onclick="clickAction(event)">물</button>
-                <button type="button" class="btn-white" data-action="listening" onclick="clickAction(event)">노래</button>
+                <button type="button" class="btn-white" data-action="sunny">햇빛</button>
+                <button type="button" class="btn-white" data-action="watering">물</button>
+                <button type="button" class="btn-white" data-action="listening">노래</button>
+            </div>
+
+            <div class="player-container">
+                <div id="youtubePlayer" class="player-cd"></div>
+                <div class="img-container">
+                    <img src="src/images/album/blueming.webp" alt="music-cover" id="cover" onerror="if (this.src != 'src/images/album/non-image.jpg') this.src = 'src/images/album/non-image.jpg';" />
+                </div>
+                <div class="player-controller">
+                    <div class="song-title">블루밍</div>
+                    <div class="player-buttons">
+                        <!-- <button id="youtuberPev" class="action-btn">
+                            <i class="fas fa-backward"></i>
+                        </button> -->
+                        </button>
+                        <!-- <button id="youtubePlay" class="action-btn action-btn-big">
+                            <i class="fas fa-play"></i>
+                        </button> -->
+                        <!-- <button id="youtubeNext" class="action-btn">
+                            <i class="fas fa-forward"></i>
+                        </button> -->
+                </div>
             </div>
         </div>
-    </main>   
+        
+
+        
+
+    </main>
 </body>
-<script type="text/javascript" src="src/js/index.js"></script>
+<script type="module" src="src/js/index.js"></script>
+<!-- <script type="text/javascript" src="src/js/index.js"></script> -->
 </html>

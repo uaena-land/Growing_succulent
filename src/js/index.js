@@ -1,49 +1,16 @@
-class Succulent {
-    constructor({name, level, exp}) { //생성자
-        this.name = name;
-        this.level = level;
-        this.exp = exp;
-        this.maxExp = 10;
-    }
+import musicData from "../Data/musicData.json" assert { type: "json" } 
+import { onYouTubeIframeAPIReady } from "./youtubePlayer.js";
+import { Succulent } from "./succulent.js";
 
-    introduce() {
-        return `안녕, 난 ${this.name} 이고 레벨은 ${this.level}이야.`;
-    }
-
-    sunny() {
-        this.exp = this.exp + 2;
-        return `레벨은 ${this.level}이고 경험치는 ${this.exp}야.`;
-    }
-
-    watering() {
-        this.exp = this.exp + 3;
-        return `레벨은 ${this.level}이고 경험치는 ${this.exp}야.`;
-    }
-
-    listening() {
-        this.exp = this.exp + 5;
-        return `레벨은 ${this.level}이고 경험치는 ${this.exp}야.`;
-    }
-
-    updateState() {
-        // if exp max <= exp
-        if(this.maxExp <= this.exp) {
-            this.levelUp();
-        }
-    }
-    levelUp() {
-        this.level = this.level + 1;
-        console.log(`현재 레벨은 ${this.level} 입니다.`);
-        this.exp = 0;
-    }
-}
-
-const planet = new Succulent({name: '다육이', level: 1, exp: 0});
+const planet = new Succulent({name: "다육이", level: 1, exp: 0});
 const gauges = document.querySelectorAll(".gauge__col");
 console.log(planet.introduce());
 setLevel();
 
-function setLevel() {
+const actionButtons = document.querySelectorAll(".btn-white");
+actionButtons.forEach(button => button.addEventListener("click", clickAction));
+
+export function setLevel() {
     const planetImg = document.querySelector(".box__image img");
     const textLevel = document.querySelector(".text__number");
     const level = planet.level > 10 ? 10 : planet.level;
@@ -59,22 +26,36 @@ function clickAction(e) {
     addExp(action);
 
     // 2. 캐릭터 리액션 이미지 변경하기 보여주기
+    const second = action === "listening" ? 7000 : 2500;
     setTimeout(changeReaction, 1200);
 
     // 3. 말풍선들 3초후 삭제
-    setTimeout(removeActions, 2000);
-    setTimeout(removeReActions, 2000);
+    setTimeout(removeActions, 2500);
+    setTimeout(removeReActions, second);
 }
-
-function changeAction(action) {
+let playSinger = "";
+export function changeAction(action) {
     const actionBox = document.querySelector(".section__home div");
     const img = document.querySelector(".box__action img");
-    actionBox.style.display = 'block';
+    actionBox.style.display = "block";
     img.src = `src/images/act_${action}.png`;
-    console.log(action);
+    if(action === "listening") {
+        const playerContainer = document.querySelector(".player-container");
+        // show player-container
+        playerContainer.style.visibility = "visible";
+        // add class play
+        playerContainer.classList.add("play");
+        // div change iframe
+        const randomData = musicData[Math.floor(Math.random() * musicData.length)];
+        const { singer } = randomData;
+        playSinger = singer;
+        onYouTubeIframeAPIReady(randomData);
+    }else {
+        playSinger = "";
+    }
 }
 
-function addExp(action) {
+export function addExp(action) {
     // 경험치 증가
     switch(action) {
         case "sunny":
@@ -96,13 +77,13 @@ function addExp(action) {
     }
 }
 
-function clearExp() {
+export function clearExp() {
     gauges.forEach((gauge) => {
         gauge.classList.remove("fill");
     });
 }
 
-function changeExpView() {
+export function changeExpView() {
     console.log("exp", planet.exp);
     const gauges = document.querySelectorAll(".gauge__col");
 
@@ -113,17 +94,20 @@ function changeExpView() {
     });
 }
 
-function changeReaction() {
+export function changeReaction() {
     const reactBubble = document.querySelector(".react__bubble");
-    reactBubble.style.display = 'block';
+    const img = document.querySelector(".react__bubble img");
+    const reaction = playSinger === "IU" ? "uaena" : "heart";
+    reactBubble.style.display = "block";
+    img.src = `src/images/react_${reaction}.png`;
 }
 
-function removeActions() {
+export function removeActions() {
     const actionBox = document.querySelector(".box__action");
     actionBox.style.display = "none";
 }
 
-function removeReActions() {
+export function removeReActions() {
     const reactBubble = document.querySelector(".react__bubble");
     reactBubble.style.display = "none";
 }
