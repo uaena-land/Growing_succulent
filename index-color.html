@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다육이 키우기</title>
+    <link rel="stylesheet" href="src/css/custom_style.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="container__view">
+                <div class="section__level">
+                    <div class="text">
+                        <span class="text__string">Lv.</span>
+                        <span class="text__number"></span>
+                    </div>
+                    <ul class="gauge__container">
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                        <li class="gauge__col"></li>
+                    </ul>
+                </div>
+                <div class="section__reaction">
+                    <div class="react__bubble">
+                        <img width="46" height="46" src="src/images/react_heart.png" />
+                    </div>
+                </div>
+                <div class="section__home">
+                    <div class="box__action">
+                        <img width="48" height="48"  src="src/images/act_listening.png" />
+                    </div>
+                    <div class="box__image">
+                        <img class="character" src="src/images/succulent_lv1.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="container__buttons">
+                <button type="button" class="btn-white" data-action="sunny" onclick="clickAction(event)">햇빛</button>
+                <button type="button" class="btn-white" data-action="watering" onclick="clickAction(event)">물</button>
+                <button type="button" class="btn-white" data-action="listening" onclick="clickAction(event)">노래</button>
+            </div>
+        </div>
+    </main>   
+</body>
+<script type="text/javascript" src="src/js/index.js"></script>
+</html>

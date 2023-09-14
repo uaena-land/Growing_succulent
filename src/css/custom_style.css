@@ -1,0 +1,113 @@
+@import "theme_root.css";
+@import "reset.css";
+@import "custom_button.css";
+
+main {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+.container {
+    width: 390px;
+    height: 400px;
+    min-width: 300px;
+    min-height: 300px;
+
+    background: var(--gameMachine-bg-color);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 16px;
+
+    margin: 0;
+
+    text-align: -webkit-center;
+}
+
+.container__view {
+    background-color: var(--text-dark-color);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    width: 80%;
+    height: 60%;
+
+    margin: 36px;
+    padding: 4px;
+
+    display: grid;
+    grid-template-rows: 30px 56px 1fr;
+}
+
+.section__level {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.section__level > .text {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.gauge__container {
+    width: 140px;
+    border: solid 1.5px;
+    display: flex;
+    margin-left: 8px;
+}
+
+.gauge__col {
+    width: 12px;
+    height: 26px;
+}
+
+.fill {
+    background-color:  var(--uaena-default-color);
+    border: solid 1px var(--uaena-dark-color);
+}
+
+.section__reaction {
+    padding: 4px;
+}
+
+.react__bubble {
+    border: solid 2px var(--uaena-default-color);
+    width: 46px;
+    height: 46px;
+    
+    display: none;
+}
+
+.section__home {
+    display: grid;
+
+    grid-template-columns: 60px 1fr 60px;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.box__action {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+
+    width: 50px;
+    height: 50px;
+
+    display: none;
+}
+
+.box__image {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    align-self: end;
+}
+
+.character {
+    object-fit: cover;
+}
+
+.button__circle {
+    background-color: #6500A6;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    margin: 0 12px;
+    color: var(--text-dark-color);
+}
