@@ -51,36 +51,42 @@ function clickAction(e) {
 
     // 2. 캐릭터 리액션 이미지 변경하기 보여주기
     const second = action === "listening" ? 6000 : 2500;
-    setTimeout(changeReaction(playSinger), 1200);
+    setTimeout(changeReaction(playSinger), second);
 
-    // 3. 말풍선들 3초후 삭제
-    setTimeout(removeActions, 2500);
-    setTimeout(removeReActions, second);
+    if(action !== "listening") {
+        // 3. 말풍선 삭제
+        setTimeout(removeActions, second);
+        setTimeout(removeReActions, second);
+    }
 
-    // 
+    // url 저장
     saveDataInUrl({name: planet.name, level: planet.level, exp: planet.exp})
 }
 
 let playSinger = "";
-export function changeAction(action) {
+export async function changeAction(action) {
     const actionBox = document.querySelector(".section__home div");
     const img = document.querySelector(".box__action img");
     actionBox.style.display = "block";
     img.src = `src/images/act_${action}.png`;
     if(action === "listening") {
-        const playerContainer = document.querySelector(".player-container");
-        // show player-container
-        playerContainer.style.visibility = "visible";
-        // add class play
-        playerContainer.classList.add("play");
-        // div change iframe
-        const randomData = musicData[Math.floor(Math.random() * musicData.length)];
-        const { singer } = randomData;
-        playSinger = singer;
-        onYouTubeIframeAPIReady(randomData);
+        await getYoutubeIFrame();
     }else {
         playSinger = "";
     }
+}
+
+function getYoutubeIFrame() {
+    const playerContainer = document.querySelector(".player-container");
+    // show player-container
+    playerContainer.style.visibility = "visible";
+    // add class play
+    playerContainer.classList.add("play");
+    // div change iframe
+    const randomData = musicData[Math.floor(Math.random() * musicData.length)];
+    const { singer } = randomData;
+    playSinger = singer;
+    onYouTubeIframeAPIReady(randomData);
 }
 
 export function addExp(action) {

@@ -1,3 +1,5 @@
+import { removeActions, removeReActions} from "./uiHandler.js";
+
 const tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName("script")[0];
@@ -12,15 +14,16 @@ const section = {
 };
 export function onYouTubeIframeAPIReady(randomData) {
     // random music Data 뽑기
-    const { id, start, end, name } = randomData;
-    onPlayerUISetting(name);
+    const { id, start, end, name, albumCover } = randomData;
+    onPlayerUISetting(name, albumCover);
+    section.start = start;
 
     player = new YT.Player("youtubePlayer", {
         //width&height를 설정할 수 있으나, 따로 css영역으로 뺐다.
         videoId: id,
         playerVars: {
-            start: start,
-            end: end,
+            start,
+            end,
         },
         events: {
             "onReady": onPlayerReady , //로딩중에 이벤트 실행한다
@@ -35,10 +38,10 @@ export function onPlayerReady() {
     player.playVideo();
 }
 
-export function onPlayerUISetting(name) {
+export function onPlayerUISetting(name, albumCover) {
     // 앨범 이미지 변경
     const image = document.querySelector(".img-container img");
-    image.src = `src/images/album/${name}.webp`
+    image.src = `src/images/album/${albumCover}.webp`
     // 노래 제목 변경
     
     const textSongName = document.querySelector(".song-title");
@@ -67,4 +70,8 @@ export function makeDom() {
     playerContainer.style.visibility = "hidden";
     // play class remove
     playerContainer.classList.remove("play");
+
+    // 3. 말풍선 삭제
+    removeActions();
+    removeReActions();
 }
