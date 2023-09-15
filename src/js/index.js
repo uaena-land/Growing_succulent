@@ -7,23 +7,30 @@ import { changeReaction, removeActions, removeReActions, changeExpView, clearExp
 import { makeToast } from './toast.js'
 
 // 기본 다육이 세팅 및 화면 이벤트 추가
-const initData = getDataFromUrl() || {name: '다육이', level: 1, exp: 0}
+const resetData = {name: '다육이', level: 1, exp: 0}
+const initData = getDataFromUrl() || resetData
 setInterval(() => {
     if (planet){
         saveDataInUrl({name: planet.name, level: planet.level, exp: planet.exp})
     }
 }, 400)
 
-const utilButton = document.querySelector(".btn-util");
-
+const saveButton = document.querySelector("#save_url");
 function copyUrl() {
     navigator.clipboard.writeText(window.location.href);
     makeToast()
 }
-utilButton.onclick = copyUrl;
+saveButton.onclick = copyUrl;
+
+const resetButton = document.querySelector("#reset_game");
+resetButton.onclick = resetGame;
+function resetGame () {
+    window.location.href = window.location.origin
+}
+
+let planet = new Succulent(initData);
 
 
-const planet = new Succulent(initData);
 const gauges = document.querySelectorAll(".gauge__col");
 
 console.log(planet.introduce());
