@@ -4,10 +4,11 @@
     --button-text-color: #313131;
 }
 
-.btn-white {
+.btn-3d {
 	color: var(--button-text-color);
 	width: 54px;
 	height: 54px;
+	position: relative;
 	margin: 0 8px;
 	background: var(--button-color);
 	border: 2px solid var(--button-border-color);
@@ -17,9 +18,9 @@
 	transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
 				background 150ms cubic-bezier(0, 0, 0.58, 1);
 }
-.btn-white::before {
+.btn-3d::before {
   	position: absolute;
-	content: "";
+	content: " ";
 	width: 100%;
 	height: 100%;
 	top: 0;
@@ -34,22 +35,41 @@
 				box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
 }
 
-.btn-white:hover {
+.btn-3d.disabled {
+	cursor: default;
+}
+
+.btn-3d.disabled:hover {
+	cursor: default;
+	transform: none;
+}
+
+.btn-3d:hover {
   	background: var(--button-color);
 	transform: translate(0, 0.25em);
 }
 
-.btn-white:hover::before {
+.btn-3d:hover::before {
   	box-shadow: 0 0 0 2px var(--button-border-color), 0 0.5em 0 0 var(--button-color);
 	transform: translate3d(0, 0.5em, -1em);
 }
 
-.btn-white:active {
+.btn-3d:active {
   	background: var(--button-color);
 	transform: translate(0em, 0.55em);
 }
 
-.btn-white:active::before {
+
+.btn-3d.disabled:active {
+	transform: none;
+}
+
+.btn-3d.disabled:active::before {
+	box-shadow: 0 0 0 2px var(--button-border-color), 0 0.625em 0 0 var(--button-color);
+	transform: translate3d(0, 0.55em, -1em);
+}
+
+.btn-3d:active::before {
   	box-shadow: 0 0 0 2px var(--button-color), 0 0 var(--button-border-color);
 	transform: translate3d(0, 0, -1em);
 }

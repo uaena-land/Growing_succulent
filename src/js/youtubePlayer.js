@@ -49,7 +49,7 @@ let done = false;
 
 export function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(makeDom, 6000);
+        setTimeout(makeDom, 5000);
         done = true;
     }
 }
