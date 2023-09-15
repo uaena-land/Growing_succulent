@@ -1,13 +1,13 @@
 class Toast {
-  constructor(message,color,time){
+  constructor(message, color, time){
     this.message = message;
     this.color = color;
     this.time = time;
     this.element = null;
-    var element = document.createElement('div');
+    const element = document.createElement('div');
     element.className = "toast-notification";
     this.element = element;
-    var countElements = document.getElementsByClassName("toast-notification");
+    const countElements = document.getElementsByClassName("toast-notification");
     
     element.style.opacity=0.8;
     
@@ -15,12 +15,11 @@ class Toast {
     
     element.style.backgroundColor = this.color;
     
-    var message = document.createElement("div");
-    message.className = "message-container";
-    message.textContent = this.message;
+    const divMessage = document.createElement("div");
+    divMessage.className = "message-container";
+    divMessage.textContent = this.message;
     
-    element.appendChild(message);
-    
+    element.appendChild(divMessage);
     document.body.appendChild(element);
     
     setTimeout(function() {
@@ -33,10 +32,10 @@ class Toast {
 const ToastType = {
   Danger : "#eb3b5a",
   Warning: "#fdcb6e",
-  Succes : "#00b894",
+  Success : "#00b894",
 }
 
 export const makeToast = () => {
-  new Toast("복사 완료", ToastType.Succes, 1300);
+  new Toast("복사 완료", ToastType.Success, 1300);
 }
 

@@ -11,6 +11,14 @@ body {
     background: linear-gradient(180deg, rgba(240,241,165,1) 23.8%, rgba(247,247,247,1) 92%);
 }
 
+* {
+    box-sizing: border-box;
+}
+*::before, *::after {
+    box-sizing: border-box;
+}
+  
+
 main {
     display: grid;
     place-items: center;
@@ -52,7 +60,8 @@ main {
     width: 80%;
     height: 60%;
 
-    margin: 36px;
+    margin: 36px 0;
+    padding: 0;
 
     display: grid;
     grid-template-rows: 30px 30px 56px 1fr;
