@@ -15,17 +15,25 @@
     <link rel="icon" href="src/images/favicon.ico">
     <link rel="apple-touch-icon" href="src/images/favicon.ico">
     <title>다육이 키우기</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
     <main>
         <div>
-            <div class='toolbar'>
-                <button type="button" class="btn-util" id="save_url"> 링크 저장 </button>
-                <button type="button" class="btn-util" id="reset_game"> 새로 키우기 </button>
-            </div>
             <div class="container">
                 <div class="container__view">
+                    <div class="system__bar">
+                        <button type="button" class="btn-util" id="copy_url" alt="공유버튼"> 
+                            <i class="fas fa-share"></i>
+                        </button>
+                        <button type="button" class="btn-util" id="reset_game" alt="게임초기화"> 
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                     <div class="section__level">
                         <div class="text">
                             <span class="text__string">Lv.</span>

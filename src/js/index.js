@@ -1,4 +1,5 @@
-import musicData from "../Data/musicData.json" assert { type: "json" } 
+const { default: musicData } = await import("../Data/musicData.json", { assert: { type: "json" } });
+
 import { onYouTubeIframeAPIReady } from "./youtubePlayer.js";
 import { Succulent } from "./succulent.js";
 import { throttle } from "./utils/debounce.js";
@@ -7,34 +8,27 @@ import { changeReaction, removeActions, removeReActions, changeExpView, clearExp
 import { makeToast } from './toast.js'
 
 // 기본 다육이 세팅 및 화면 이벤트 추가
-const resetData = {name: '다육이', level: 1, exp: 0}
-const initData = getDataFromUrl() || resetData
-setInterval(() => {
-    if (planet){
-        saveDataInUrl({name: planet.name, level: planet.level, exp: planet.exp})
-    }
-}, 400)
+const resetData = {name: '다육이', level: 1, exp: 0};
+const initData = getDataFromUrl() || resetData;
 
-const saveButton = document.querySelector("#save_url");
+let planet = new Succulent(initData);
+console.log(planet.introduce());
+setLevel();
+
+const saveButton = document.querySelector("#copy_url");
 function copyUrl() {
     navigator.clipboard.writeText(window.location.href);
     makeToast()
 }
-saveButton.onclick = copyUrl;
+saveButton.addEventListener("click", copyUrl);
 
 const resetButton = document.querySelector("#reset_game");
-resetButton.onclick = resetGame;
 function resetGame () {
     window.location.href = window.location.origin
 }
+resetButton.addEventListener("click", resetGame);
 
-let planet = new Succulent(initData);
 
-
-const gauges = document.querySelectorAll(".gauge__col");
-
-console.log(planet.introduce());
-setLevel();
 
 const actionButtons = document.querySelectorAll(".btn-3d");
 actionButtons.forEach(button => button.addEventListener("click", throttle(clickAction)));
@@ -63,6 +57,9 @@ function clickAction(e) {
     // 3. 말풍선들 3초후 삭제
     setTimeout(removeActions, 2500);
     setTimeout(removeReActions, second);
+
+    // 
+    saveDataInUrl({name: planet.name, level: planet.level, exp: planet.exp})
 }
 
 let playSinger = "";
