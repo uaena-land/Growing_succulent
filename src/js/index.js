@@ -1,4 +1,4 @@
-import musicData from "../Data/musicData.json" assert { type: "json" } 
+const { default: musicData } = await import("../Data/musicData.json", { assert: { type: "json" } });
 import { onYouTubeIframeAPIReady } from "./youtubePlayer.js";
 import { Succulent } from "./succulent.js";
 import { throttle } from "./utils/debounce.js";
