@@ -19,46 +19,47 @@
 </head>
 <body>
     <main>
-        <div class="container">
-            <div class="container__view">
-                <div class="section__level">
-                    <div class="text">
-                        <span class="text__string">Lv.</span>
-                        <span class="text__number"></span>
+        <div>
+            <div class="container">
+                <div class="container__view">
+                    <div class="section__level">
+                        <div class="text">
+                            <span class="text__string">Lv.</span>
+                            <span class="text__number"></span>
+                        </div>
+                        <ul class="gauge__container">
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                            <li class="gauge__col"></li>
+                        </ul>
                     </div>
-                    <ul class="gauge__container">
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                        <li class="gauge__col"></li>
-                    </ul>
+                    <div class="section__reaction">
+                        <div class="react__bubble">
+                            <img width="46" height="46" src="src/images/react_heart.png" />
+                        </div>
+                    </div>
+                    <div class="section__home">
+                        <div class="box__action">
+                            <img width="48" height="48"  src="src/images/act_listening.png" />
+                        </div>
+                        <div class="box__image">
+                            <img class="character" src="src/images/succulent_lv1.png" />
+                        </div>
+                    </div>
                 </div>
-                <div class="section__reaction">
-                    <div class="react__bubble">
-                        <img width="46" height="46" src="src/images/react_heart.png" />
-                    </div>
-                </div>
-                <div class="section__home">
-                    <div class="box__action">
-                        <img width="48" height="48"  src="src/images/act_listening.png" />
-                    </div>
-                    <div class="box__image">
-                        <img class="character" src="src/images/succulent_lv1.png" />
-                    </div>
+                <div class="container__buttons">
+                    <button type="button" class="btn-3d" data-action="sunny">햇빛</button>
+                    <button type="button" class="btn-3d" data-action="watering">물</button>
+                    <button type="button" class="btn-3d" data-action="listening">노래</button>
                 </div>
             </div>
-            <div class="container__buttons">
-                <button type="button" class="btn-white" data-action="sunny">햇빛</button>
-                <button type="button" class="btn-white" data-action="watering">물</button>
-                <button type="button" class="btn-white" data-action="listening">노래</button>
-            </div>
-
             <div class="player-container">
                 <div id="youtubePlayer" class="player-cd"></div>
                 <div class="img-container">
@@ -66,24 +67,10 @@
                 </div>
                 <div class="player-controller">
                     <div class="song-title">블루밍</div>
-                    <div class="player-buttons">
-                        <!-- <button id="youtuberPev" class="action-btn">
-                            <i class="fas fa-backward"></i>
-                        </button> -->
-                        </button>
-                        <!-- <button id="youtubePlay" class="action-btn action-btn-big">
-                            <i class="fas fa-play"></i>
-                        </button> -->
-                        <!-- <button id="youtubeNext" class="action-btn">
-                            <i class="fas fa-forward"></i>
-                        </button> -->
                 </div>
             </div>
         </div>
         
-
-        
-
     </main>
 </body>
 <script type="module" src="src/js/index.js"></script>
