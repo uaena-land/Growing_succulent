@@ -2,7 +2,15 @@ import musicData from "../Data/musicData.json" assert { type: "json" }
 import { onYouTubeIframeAPIReady } from "./youtubePlayer.js";
 import { Succulent } from "./succulent.js";
 
-const planet = new Succulent({name: "다육이", level: 1, exp: 0});
+
+const initData = getDataFromUrl() || {name: '다육이', level: 1, exp: 0}
+setInterval(() => {
+    if (planet){
+        saveDataInUrl({name: planet.name, level: planet.level, exp: planet.exp})
+    }
+}, 1000)
+
+const planet = new Succulent(initData);
 const gauges = document.querySelectorAll(".gauge__col");
 console.log(planet.introduce());
 setLevel();
@@ -111,3 +119,37 @@ export function removeReActions() {
     const reactBubble = document.querySelector(".react__bubble");
     reactBubble.style.display = "none";
 }
+
+// ROUTING
+
+function utf8_to_b64( str ) {
+  return window.btoa(unescape(encodeURIComponent( str )));
+}
+
+function b64_to_utf8( str ) {
+  return decodeURIComponent(escape(window.atob( str )));
+}
+
+function saveDataInUrl(data){
+    const dataEncoded = utf8_to_b64(JSON.stringify(data))
+    let searchParams = new URLSearchParams(window.location.search);
+    searchParams.set('data', dataEncoded);
+    // window.location.search = searchParams; reload 되므로 안됨
+    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + searchParams.toString();
+    window.history.pushState({path: newurl}, '', newurl);
+}
+
+function getDataFromUrl(){
+    let params = new URLSearchParams(window.location.search);
+    let data = params.get('data');
+    if (!data){
+        return null;    
+    }
+    
+    return JSON.parse(b64_to_utf8(data));
+}
+
+
+
+
+
