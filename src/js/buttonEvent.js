@@ -17,10 +17,7 @@ export function openModal() {
 }
 
 export function clickYesButton() {
-    console.log("clickYesButton");
     resetGame();
-    // modal 실행 및 성공 토스트 출력;
-    makeToast("다육이 레벨을 초기화 했습니다");
     closeModal();
 }
 
