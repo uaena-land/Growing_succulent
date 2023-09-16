@@ -15,11 +15,18 @@
 	text-align: center;
 	user-select: none;
 	background-color: var(--button-color);
+	border: 1px solid var(--button-border-color);
+	border-radius: 8px;
+	padding: 8px;
+	height: 40px;
+	margin: 0 2px;
+}
+
+.btn-util.icon {
+	border-radius: 50%;
 	border: solid transparent;
 	width: 30px;
 	height: 30px;
-	border-radius: 50%;
-	margin: 0 2px;
 }
 
 .btn-util:hover {
