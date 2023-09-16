@@ -2,9 +2,10 @@ const { default: musicData } = await import("../Data/musicData.json", { assert: 
 import { onYouTubeIframeAPIReady } from "./youtubePlayer.js";
 import { Succulent } from "./succulent.js";
 import { throttle } from "./utils/debounce.js";
+import { openModal, copyUrl, clickYesButton, closeModal } from "./buttonEvent.js";
 import { changeReaction, removeActions, removeReActions, changeExpView, clearExp, preventClickUI} from "./uiHandler.js";
 
-import { makeToast } from './toast.js'
+
 
 // 기본 다육이 세팅 및 화면 이벤트 추가
 const resetData = {name: '다육이', level: 1, exp: 0};
@@ -15,19 +16,15 @@ console.log(planet.introduce());
 setLevel();
 
 const saveButton = document.querySelector("#copy_url");
-function copyUrl() {
-    navigator.clipboard.writeText(window.location.href);
-    makeToast()
-}
 saveButton.addEventListener("click", copyUrl);
 
 const resetButton = document.querySelector("#reset_game");
-function resetGame () {
-    window.location.href = window.location.origin
-}
-resetButton.addEventListener("click", resetGame);
+resetButton.addEventListener("click", openModal);
 
-
+const yesButton = document.querySelector(".btn-yes");
+yesButton.addEventListener("click", clickYesButton);
+const noButton = document.querySelector(".btn-no");
+noButton.addEventListener("click", closeModal);
 
 const actionButtons = document.querySelectorAll(".btn-3d");
 actionButtons.forEach(button => button.addEventListener("click", throttle(clickAction)));
