@@ -5,6 +5,7 @@ import { throttle } from "./utils/debounce.js";
 import { changeReaction, removeActions, removeReActions, changeExpView, clearExp, preventClickUI} from "./uiHandler.js";
 
 import { makeToast } from './toast.js'
+import chosung from './chosung.js'
 
 // 기본 다육이 세팅 및 화면 이벤트 추가
 const resetData = {name: '다육이', level: 1, exp: 0};
